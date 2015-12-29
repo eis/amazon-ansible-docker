@@ -30,11 +30,11 @@ Push local Docker image to Amazon
 Uploading ~700M takes up to 30 minutes on my machine!
 ```
 vagrant ssh
-docker save eis/node-web-app > /tmp/node-image.tar
+docker save -o /tmp/node-image.tar eis/node-web-app
 scp -i ~/.ssh/amazon-testpair.pem /tmp/node-image.tar ubuntu@52.32.162.69:
 ssh -i ~/.ssh/amazon-testpair.pem ubuntu@52.32.162.69
 sudo usermod -aG docker ubuntu # if not already done - solves connectivity thing
-docker load < node-image.tar
+docker load -i node-image.tar
 docker images
 docker run -p 49160:8080 -d eis/node-web-app
 ```
