@@ -1,0 +1,5 @@
+- name: Install Docker on Amazon Server
+  hosts: testserver
+  sudo: true
+  roles:
+    - angstwad.docker_ubuntu
